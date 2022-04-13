@@ -22,9 +22,25 @@ class BooksController < ApplicationController
   end
 
   def show
+    
+    @book = Book.find(params[:id])
+    
   end
 
   def edit
+    
+    @book = Book.find(params[:id])
+    
+  end
+  
+  def destroy
+    
+    @book = Book.find(params[:id])
+    
+    @book.destroy
+    
+    redirect_to book_path
+    
   end
   
    # 投稿データのストロングパラメータ
@@ -32,7 +48,7 @@ class BooksController < ApplicationController
 
   def book_params
     
-    params.require(:book).permit(:title, :body,)
+    params.require(:book).permit(:title, :body)
     
   end
 
