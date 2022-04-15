@@ -17,7 +17,7 @@ class BooksController < ApplicationController
     
     @book.save
     
-    redirect_to root_path
+    redirect_to books_path
     
   end
 
