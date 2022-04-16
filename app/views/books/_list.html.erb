@@ -1,15 +1,16 @@
 <h1>User info</h1>
 
+<%= image_tag @user.get_profile_image(100,100) %>
+
 <table>
 
   <tbody>
-
-    <tr></tr>
+    
     <tr>
 
       <th>name</th>
 
-      <th></th>
+      <th><%= @user.name %></th>
 
     </tr>
 
@@ -17,7 +18,7 @@
 
       <th>introduction</th>
 
-      <th></th>
+      <th><%= @user.introduction %></th>
 
     </tr>
 
