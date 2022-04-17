@@ -1,0 +1,15 @@
+<% if obj.errors.any? %>
+
+  <%= obj.errors.count %>errors prohibited this obj from being saved:
+
+  <ul>
+
+    <% obj.errors.full_massages.each do |massage| %>
+
+      <li><%= massage %></li>
+
+    <% end %>
+
+  </ul>
+
+<% end %>

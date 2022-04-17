@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  #(ログインユーザー以外の人が情報を遷移しようとした時に制限をかける)
+  before_action :authenticate_user!
 
   def index
 
@@ -17,9 +19,19 @@ class BooksController < ApplicationController
 
     @book.user_id = current_user.id
 
-    @book.save
+    if @book.save
+      
+      flash[:notice] = "You have creatad book successfully."
 
-    redirect_to books_path(@book)
+      redirect_to books_path(@book)
+      
+    else
+      
+      @book = Book.all
+      
+      render :index
+      
+    end
 
   end
 
