@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   
   get "/homes/about" => "homes#about", as: "about"
+  
+  get "users/:id" => "users#show", as: :mypage
 
 end

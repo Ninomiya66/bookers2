@@ -1,1 +1,36 @@
 <%= render 'books/list', books: @books %>
+
+<h1>Books</h1>
+
+<table>
+
+  <thead>
+
+    <tr>
+
+      <th>Title</th>
+
+      <th>Opinion</th>
+
+      <th></th>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <% @books.each do |book| %>
+
+    <%= link_to user_path(@user.id) do %>
+
+      <%= image_tag book.user.get_profile_image(100,100) %>
+
+    <% end %>
+    
+    <%= link_to book.title, book_path(book.id) %>
+
+    <% end %>
+
+  </tbody>
+</table>
