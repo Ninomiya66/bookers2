@@ -12,7 +12,7 @@
     <%= csp_meta_tag %>
 
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -22,63 +22,132 @@
 
     <header>
 
-      <h1><%= link_to "Bookers", root_path %></h1>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-    <% if user_signed_in? %>
+        <div class="container">
 
-      <li>
+         <%= link_to "Bookers", root_path, class: 'navbar-brand' %>
 
-        <%= link_to "Home", user_path(current_user) %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
 
-      </li>
+            <span class="navbar-toggler-icon"></span>
 
-      <li>
+          </button>
 
-        <%= link_to "Users", users_path %>
+          <div class="navbar-collapse collapse show" id="navbarNavDropdown">
 
-      </li>
+            <ul class="navbar-nav ml-auto">
 
-      <li>
+              <% if user_signed_in? %>
 
-        <%= link_to "Books", books_path %>
+              <li>
 
-      </li>
+                  <%= link_to user_path(current_user), class: "nav-link text-light" do %>
 
-      <li>
+                  <i class="fas fa-home"></i>
+                  
+                  Home
+                  <% end %>
 
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
 
-      </li>
+              <li>
 
-    <% else %>
+                <a class="nav-link text-light" href="/users">
 
-      <li>
+                  <i class="fas fa-link"></i>
 
-        <%= link_to "Home", root_path %>
+                  Users
 
-      </li>
+                </a>
 
-      <li>
+              </li>
 
-        <%= link_to "About", about_path %>
+              <li>
 
-      </li>
+                <a class="nav-link text-light" href="/books">
 
-      <li>
+                  <i class="fal fa-book-open"></i>
 
-        <%= link_to "Sign up", new_user_registration_path %>
+                  Books
 
-      </li>
+                </a>
 
-      <li>
+              </li>
 
-        <%= link_to "Log in", new_user_session_path %>
+              <li>
 
-      </li>
+                <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
 
-    <% end %>
+                  <i class="fas fa-sign-out-alt"></i>
 
-  </header>
+                  Log out
+
+                </a>
+
+              </li>
+
+              <% else %>
+
+              <li>
+
+                <a class="nav-link text-light" href="/">
+
+                  <i class="fas fa-home"></i>
+
+                  Home
+
+                </a>
+
+              </li>
+
+              <li>
+
+                <a class="nav-link text-light" href="/home/about">
+
+                  <i class="fas fa-link"></i>
+
+                  About
+
+                </a>
+
+              </li>
+
+              <li>
+
+                <a class="nav-link text-light" href="/users/sign_up">
+
+                   <i class="fas fa-user-plus"></i>
+
+                   Sign up
+
+                </a>
+
+              </li>
+
+              <li>
+
+                <a class="nav-link text-light" href="/users/sign_in">
+
+                  <i class="fas fa-sign-in-alt"></i>
+
+                  Log in
+
+                </a>
+
+              </li>
+
+              <% end %>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </nav>
+
+    </header>
 
   <main>
     <% flash.each do |key, value| %>
