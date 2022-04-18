@@ -4,12 +4,12 @@ class BooksController < ApplicationController
 
   def index
     
-    @user = current_user
+    @books = Book.all
     
     @book = Book.new
     
-    @books =Book.all
-
+    @user = current_user
+    
   end
 
   def create
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
 
       @user = current_user
 
-      @book = Book.all
+      @books = Book.all
 
       render :index
 
@@ -47,6 +47,18 @@ class BooksController < ApplicationController
   def edit
 
     @book = Book.find(params[:id])
+    
+    if @book.user_id == current_user.id
+      
+      render :edit
+      
+    else
+      
+      redirect_to books_path
+      
+    end
+    
+    
 
   end
 
@@ -88,5 +100,5 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
 
   end
-
+  
 end

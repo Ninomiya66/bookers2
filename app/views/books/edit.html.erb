@@ -1,5 +1,7 @@
 <h1>Editing Book</h1>
 
+<%= render "errors/errors", obj: @book %>
+
 <%= form_with model: @book do |f| %>
 
   <label for="book_title">TItle</label>

@@ -28,7 +28,7 @@
 
       <li>
 
-        <%= link_to "Home", root_path %>
+        <%= link_to "Home", user_path(current_user) %>
 
       </li>
 
@@ -81,6 +81,11 @@
   </header>
 
   <main>
+    <% flash.each do |key, value| %>
+
+    　　<%= content_tag(:div, value, class: "#{key}") %>
+
+  　<% end %>
 
     <%= yield %>
 
